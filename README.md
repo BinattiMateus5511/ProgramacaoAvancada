@@ -12,4 +12,4 @@ Uma biblioteca em Kotlin para modelar e manipular dados JSON em memória, desenv
 
 ## Exemplo de uso
 
-<Colocar aqui> 
+Colocar aqui
