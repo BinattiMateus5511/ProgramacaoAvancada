@@ -62,8 +62,8 @@ class JsonModelTest {
         val mapped = array.map { value ->
             if (value is JSONNumber) JSONNumber(value.value.toInt() * 2) else value
         }
-        val expected = "[2,4,6]"
-        assertEquals(expected, mapped.toJSONString())
+        val expectedElements = listOf(JSONNumber(2), JSONNumber(4), JSONNumber(6))
+        assertEquals(expectedElements, mapped.elements)
     }
 
     @Test
@@ -72,8 +72,8 @@ class JsonModelTest {
         val filtered = array.filter { value ->
             value is JSONNumber && value.value.toInt() % 2 != 0
         }
-        val expected = "[1,3]"
-        assertEquals(expected, filtered.toJSONString())
+        val expectedElements = listOf(JSONNumber(1), JSONNumber(3))
+        assertEquals(expectedElements, filtered.elements)
     }
 
     @Test
