@@ -1,3 +1,5 @@
+package jsonlib
+
 import kotlin.reflect.KClass
 
 /**

@@ -1,3 +1,6 @@
+package jsonlib.test
+
+import jsonlib.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 

@@ -1,4 +1,4 @@
-// Modelo base
+package jsonlib// Modelo base
 
 /**
  * Interface base para qualquer valor JSON.
