@@ -1,0 +1,36 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' Representa a função inferJson()
+class Inferencer {
+    +inferJson(value: Any?): JSONValue
+}
+
+' Tipos suportados de entrada Kotlin
+class "String" <<Kotlin>>
+class "Int" <<Kotlin>>
+class "Double" <<Kotlin>>
+class "Boolean" <<Kotlin>>
+class "null" <<Kotlin>>
+class "Enum" <<Kotlin>>
+class "List<*>" <<Kotlin>>
+class "Map<String, *>" <<Kotlin>>
+class "Data Class" <<Kotlin>>
+
+' JSONValue como saída
+interface JSONValue
+
+' Relações
+"String" --> Inferencer
+"Int" --> Inferencer
+"Double" --> Inferencer
+"Boolean" --> Inferencer
+"null" --> Inferencer
+"Enum" --> Inferencer
+"List<*>" --> Inferencer
+"Map<String, *>" --> Inferencer
+"Data Class" --> Inferencer
+
+Inferencer --> JSONValue : retorna
+
+@enduml
