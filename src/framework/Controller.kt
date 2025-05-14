@@ -1,26 +1,8 @@
 package framework
 
-/**
- * Anotação para mapear classes ou métodos para uma rota HTTP específica.
- * Pode ser usada tanto em classes (para definir o prefixo) quanto em funções (para definir o endpoint).
- * @property value Caminho da URL a ser mapeado.
- */
-@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
-annotation class Mapping(val value: String)
-
-/**
- * Anotação usada para indicar que um parâmetro da função deve ser obtido diretamente do caminho da URL.
- * Exemplo: /api/path/{variavel}
- */
-@Target(AnnotationTarget.VALUE_PARAMETER)
-annotation class Path
-
-/**
- * Anotação usada para indicar que um parâmetro da função deve ser obtido da query string.
- * Exemplo: /api/args?n=2&text=olá
- */
-@Target(AnnotationTarget.VALUE_PARAMETER)
-annotation class Param
+import framework.Mapping
+import framework.Param
+import framework.Path
 
 /**
  * Classe controladora que representa um grupo de endpoints REST disponíveis sob o prefixo "/api".

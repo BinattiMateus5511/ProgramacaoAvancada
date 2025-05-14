@@ -5,7 +5,7 @@ import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.memberFunctions
 
 /**
- * Representa o resultado de um match bem-sucedido entre URL e método.
+ * Representa o resultado de um match bem-sucedido entre URL e metodo.
  */
 data class MatchedRoute(
     val function: KFunction<*>,
@@ -14,7 +14,7 @@ data class MatchedRoute(
 
 /**
  * Faz o match entre o path da URL e os métodos anotados com @Mapping.
- * Retorna o método correspondente e as variáveis de path extraídas.
+ * Retorna o metodo correspondente e as variáveis de path extraídas.
  */
 fun matchRoute(controller: Any, url: String): MatchedRoute? {
     val parsed = parseUrl(url)
@@ -22,8 +22,11 @@ fun matchRoute(controller: Any, url: String): MatchedRoute? {
     val functions = controller::class.memberFunctions
 
     for (function in functions) {
-        val mapping = function.findAnnotation<Mapping>() ?: continue
-        val pathTemplate = mapping.value.split("/").filter { it.isNotEmpty() }
+        val classMapping = controller::class.findAnnotation<Mapping>()?.value ?: ""
+        val methodMapping = function.findAnnotation<Mapping>()?.value ?: continue
+        val fullMapping = (classMapping.trim('/') + "/" + methodMapping.trim('/')).trim('/')
+
+        val pathTemplate = fullMapping.split("/").filter { it.isNotEmpty() }
 
         if (pathTemplate.size != parsed.pathSegments.size) continue
 
